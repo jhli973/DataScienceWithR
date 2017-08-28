@@ -1,0 +1,48 @@
+---
+title: "TidyText"
+output: html_document
+---
+
+Tidy Text Mining with R by [Julia Silge and David Robinson](http://tidytextmining.com/)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sample Test
+in the document. You can embed an R code chunk like this:
+
+```{r }
+library(dplyr)
+text <- c("Because I could not stop for Death -",
+          "He kindly stopped for me -",
+          "The Carriage held but just Ourselves -",
+          "and Immortality")
+text
+```
+
+## Tokenize Word
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+text_df <- data_frame(line=4, text = text)
+text_df
+```
+
+```{r}
+library(tidytext)
+text_df %>% unnest_tokens(word, text)
+```
+
+```{r}
+url= 'http://www.gutenberg.org/cache/epub/100/pg100.txt'
+file <- read.table(url,  sep="\t", strip.white=TRUE)
+head(file)
+```
+```{r}
+url= 'http://www.gutenberg.org/cache/epub/100/pg100.txt'
+file <- scan(url, what = character(), sep="\n", skip=1)
+head(file)
+```
+
